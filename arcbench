@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# The benchmark's single entry point. Every experimental factor is a flag; see `./arcbench --help`.
+set -euo pipefail
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec "$here/node_modules/.bin/tsx" "$here/src/cli/main.ts" "$@"

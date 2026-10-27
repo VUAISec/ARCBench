@@ -1,0 +1,38 @@
+{
+  "name": "arcbench",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "bin": {
+    "arcbench": "./arcbench"
+  },
+  "scripts": {
+    "arcbench": "tsx src/cli/main.ts",
+    "test": "vitest run tests",
+    "test:metrics": "PY=$([ -x .venv/bin/python3 ] && echo .venv/bin/python3 || echo python3); PYTHONPATH=. $PY -m pytest tests/metrics_core tests/metrics_attribution -q -p no:cacheprovider",
+    "test:golden-full": "ARCBENCH_GOLDEN_FULL=1 vitest run tests/golden-replay.test.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "rq:scripts": "tsx src/rq/generate-scripts.ts",
+    "setup": "scripts/setup.sh"
+  },
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "file:vendor/pi/earendil-works-pi-coding-agent-0.84.3.tgz",
+    "franc-min": "^6.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.19",
+    "tsx": "4.22.1",
+    "typescript": "5.9.3",
+    "vitest": "4.1.9"
+  },
+  "overrides": {
+    "@earendil-works/pi-ai": "file:vendor/pi/earendil-works-pi-ai-0.84.3.tgz",
+    "@earendil-works/pi-agent-core": "file:vendor/pi/earendil-works-pi-agent-core-0.84.3.tgz",
+    "@earendil-works/pi-client": "file:vendor/pi/earendil-works-pi-client-0.84.3.tgz",
+    "@earendil-works/pi-protocol": "file:vendor/pi/earendil-works-pi-protocol-0.84.3.tgz",
+    "@earendil-works/pi-tui": "file:vendor/pi/earendil-works-pi-tui-0.84.3.tgz",
+    "@earendil-works/pi-telemetry": "file:vendor/pi/earendil-works-pi-telemetry-0.84.3.tgz"
+  }
+}

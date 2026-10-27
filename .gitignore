@@ -1,0 +1,17 @@
+.DS_Store
+.env
+node_modules/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# New runs of `./arcbench run` and of scripts/rqN/sM-*/run.sh (raw trajectories included).
+runs/
+
+# Local records and tooling tied to how this benchmark was built; not part of it.
+docs/
+tools/
+
+# The study rows behind the paper; not released with the code.
+results/

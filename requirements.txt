@@ -1,0 +1,4 @@
+# Python for `arcbench evaluate` (metrics/) and its tests. Versions are the ones the benchmark was verified with.
+numpy==2.3.3
+pandas==2.3.2
+pytest==9.0.3

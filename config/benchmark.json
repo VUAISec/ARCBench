@@ -1,0 +1,49 @@
+{
+  "_comment": "Fixed settings shared by every run. Experimental factors are CLI flags, never keys here. Values are the ones every study of the paper ran with. piRevision names the pi build vendored in vendor/pi/ and is stamped into every row.",
+  "seed": 7,
+  "temperature": 0.7,
+  "reasoningEffort": "low",
+  "specPinnedModel": "gpt-5.5",
+
+  "piRevision": "97fa14e39cfce78c273a36b2d9e8509cd5bc6b72",
+  "keepRecentTokens": 100,
+  "reserveTokens": 16384,
+
+  "openrouterBaseUrl": "https://openrouter.ai/api/v1",
+  "requestConcurrency": 4,
+  "requestTimeoutMs": 180000,
+  "maxTransientRetries": 4,
+  "retryBaseDelayMs": 1000,
+  "maxToolSteps": 4,
+  "freeModelConcurrency": 1,
+  "freeModelDelayMs": 3000,
+  "perModelThroughput": {
+    "qwen/qwen3.7-flash": { "concurrency": 2, "delayMs": 1000 }
+  },
+
+  "haystackTargetChars": 96000,
+  "needleKeyPrefix": "project",
+  "haystackInsertionTurn": 1,
+  "haystackArms": [
+    { "id": "A3", "delivery": "chunked-tool-results", "chunkChars": 1930, "reference": true }
+  ],
+
+  "trajectoryRecording": true,
+  "trajectoryHaystackMode": "reference",
+
+  "compaction": {
+    "harnessBoundary": {
+      "retainedTailTokens": 50,
+      "cutAt": "turn-boundary",
+      "calibrationStatus": "calibrated-2026-09-08",
+      "calibrationNote": "Reproduces pi's cut index exactly on 36/36 observations (9 tasks x filler x attack) at keepRecentTokens=100, per-observation tail difference 0."
+    },
+    "selectionBudget": {
+      "defaultTokens": 200,
+      "perStrategyTokens": {},
+      "note": "Estimated tokens of prefix a select arm (fifo, lru-mechanism, lru-prompting) may keep. 200 clears the largest policy (99 tokens)."
+    },
+    "summarizerMaxTokens": 16384,
+    "responseAllowanceTokens": 4096
+  }
+}

@@ -1,0 +1,11 @@
+node_modules
+.venv
+.git
+**/__pycache__
+.pytest_cache
+# Results and new runs are mounted at run time (see Dockerfile), never baked in, so an image built
+# here matches one built from a clone.
+results
+runs
+docs
+tools

@@ -1,0 +1,13 @@
+diff --git a/packages/ai/src/providers/cloudflare-ai-gateway.ts b/packages/ai/src/providers/cloudflare-ai-gateway.ts
+index 50c10569f..d3a1c7309 100644
+--- a/packages/ai/src/providers/cloudflare-ai-gateway.ts
++++ b/packages/ai/src/providers/cloudflare-ai-gateway.ts
+@@ -9,7 +9,7 @@ import { cloudflareStreams } from "./cloudflare-stream.ts";
+ export function cloudflareAIGatewayProvider(): Provider<
+ 	"anthropic-messages" | "openai-completions" | "openai-responses"
+ > {
+-	return createProvider({
++	return createProvider<"anthropic-messages" | "openai-completions" | "openai-responses">({
+ 		id: "cloudflare-ai-gateway",
+ 		name: "Cloudflare AI Gateway",
+ 		auth: { apiKey: cloudflareAIGatewayAuth() },
